@@ -41,14 +41,14 @@ services:
   database:
     image: mariadb:latest
     environment:
-      MYSQL_DATABASE: socia
-      MYSQL_USER: socia
-      MYSQL_PASSWORD: socia
-      MYSQL_ROOT_PASSWORD: socia_root
+      MYSQL_DATABASE: blog
+      MYSQL_USER: blog
+      MYSQL_PASSWORD: blog
+      MYSQL_ROOT_PASSWORD: blog
     volumes:
         - ./docker/configs/mariadb/my.cnf:/etc/mysql/my.cnf
     ports:
-      - 33061:3306
+      - 3306:3306
 
   # Redis
   redis:
