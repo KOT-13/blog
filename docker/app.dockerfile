@@ -14,8 +14,6 @@ RUN apt-get update && apt-get install -y libmagickwand-6.q16-dev --no-install-re
 && pecl install imagick \
 && echo "extension=imagick.so" > /usr/local/etc/php/conf.d/ext-imagick.ini
 
-RUN pecl install xdebug-2.6.0 && docker-php-ext-enable xdebug
-
 RUN pecl install ast && docker-php-ext-enable ast
 
 RUN curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
@@ -32,19 +30,8 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 && php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer --snapshot \
 && rm -f /tmp/composer-setup.*
 
-# php SPX (simple profile extension )
-RUN apt-get install zlib1g-dev
-RUN mkdir -p /home/tools/spx \
-    && git clone https://github.com/NoiseByNorthwest/php-spx.git /home/tools/spx \
-    && cd /home/tools/spx \
-    && phpize && ./configure && make && make install \
-    && mkdir /tmp/spx \
-    && chmod -R 0777 /tmp/spx
-
 # Installing Frontend dependencies
 RUN npm i -g npm
-RUN npm i -g webpack
-RUN npm i -g webpack-cli
 
 # Installing Laravel Echo server dependencies
 RUN npm i -g laravel-echo-server
