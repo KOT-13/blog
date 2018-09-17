@@ -20,6 +20,7 @@
         </div>
 
         {{-- Add a comment --}}
+        @if(Auth::check())
         <hr>
         <div class="card">
             <div class="card-block">
@@ -38,5 +39,6 @@
 
             </div>
         </div>
+        @endif
     </div>
 @endsection
