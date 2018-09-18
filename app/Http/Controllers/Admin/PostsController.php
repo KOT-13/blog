@@ -44,6 +44,7 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         Post::create($request->toArray());
+        return redirect(route('admin.post.index'));
     }
 
     /**
