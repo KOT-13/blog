@@ -3,7 +3,7 @@
 @section('content')
     <div class="col-sm-8 blog-main">
 
-        <h2>All users: {{ $users }}</h2> <a href="">Show</a>
+        <h2>All users: {{ $users }}</h2> <a href="{{ route('admin.user.index') }}">Show</a>
 
 
         <hr>

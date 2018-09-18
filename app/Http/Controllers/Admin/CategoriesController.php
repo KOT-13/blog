@@ -7,6 +7,10 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+/**
+ * Class CategoriesController
+ * @package App\Http\Controllers\Admin
+ */
 class CategoriesController extends Controller
 {
     /**
@@ -45,35 +49,39 @@ class CategoriesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Category $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        //
+        return view('admin.category.show', compact('category'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Category $category
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @param Category $category
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category): RedirectResponse
     {
-        //
+        $userData = array_filter($request->all());
+        $category->fill($userData);
+        $category->save();
+
+        return redirect(route('admin.category.index'));
     }
 
     /**
