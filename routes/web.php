@@ -31,4 +31,5 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'as' => 'admin.'], functi
     Route::get('/', 'DashboardController@index');
     Route::resource('category', 'CategoriesController');
     Route::resource('user', 'UsersController');
+    Route::resource('post', 'PostsController');
 });
