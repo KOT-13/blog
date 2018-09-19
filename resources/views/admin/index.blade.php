@@ -14,7 +14,7 @@
 
 
         <hr>
-        <h2>All comments: {{ $comments }}</h2> <a href="">Show</a>
+        <h2>All comments: {{ $comments }}</h2> <a href="{{ route('admin.comment.index') }}">Show</a>
 
 
     </div>

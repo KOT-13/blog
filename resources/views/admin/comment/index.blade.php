@@ -2,28 +2,26 @@
 
 @section('content')
     <div class="col-sm-8 blog-main">
-        <h2>All Posts:</h2>
-        <a class="btn btn-success" href="{{ route('admin.post.create') }}">Create new Post</a><hr>
+        <h2>All Comments:</h2>
+        <a class="btn btn-success" href="{{ route('admin.comment.create') }}">Create new comment</a><hr>
         <table class="table">
             <thead>
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">User Id</th>
-                <th scope="col">Title</th>
+                <th scope="col">Body</th>
                 <th scope="col">Show</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
             </tr>
             </thead>
             <tbody>
-            @foreach( $posts as $post )
+            @foreach( $comments as $comment )
                 <tr>
-                    <th scope="row">{{ $post->id }}</th>
-                    <td>{{ $post->user_id }}</td>
-                    <td>{{ $post->title }}</td>
-                    <td><a href="{{ route('admin.post.show', $post) }}">Show</a></td>
-                    <td><a href="{{ route('admin.post.edit', $post) }}">Edit</a></td>
-                    <form action="{{ route('admin.post.destroy', $post) }}" method="post">
+                    <th scope="row">{{ $comment->id }}</th>
+                    <td>{{ $comment->body }}</td>
+                    <td><a href="{{ route('admin.comment.show', $comment) }}">Show</a></td>
+                    <td><a href="{{ route('admin.comment.edit', $comment) }}">Edit</a></td>
+                    <form action="{{ route('admin.comment.destroy', $comment) }}" method="post">
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="DELETE">
                         <td><button type="submit" class="btn btn-link">Delete</button></td>

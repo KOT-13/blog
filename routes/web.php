@@ -32,4 +32,5 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'as' => 'admin.'], functi
     Route::resource('category', 'CategoriesController');
     Route::resource('user', 'UsersController');
     Route::resource('post', 'PostsController');
+    Route::resource('comment', 'CommentsController');
 });

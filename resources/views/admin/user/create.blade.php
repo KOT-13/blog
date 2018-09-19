@@ -9,18 +9,26 @@
 
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" name="name" class="form-control" placeholder="Enter your name">
+                <input type="text" name="name" class="form-control">
             </div>
 
             <div class="form-group">
                 <label for="email">Email address</label>
-                <input type="email" name="email" class="form-control" placeholder="Enter your email">
+                <input type="email" name="email" class="form-control">
             </div>
+
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" class="form-control" placeholder="Password">
+                <input type="password" name="password" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="password_confirmation">Password Confirmation:</label>
+                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
             </div>
             <button type="submit" class="btn btn-primary">Create</button>
+
+            @include('layouts.errors')
         </form>
 
     </div>

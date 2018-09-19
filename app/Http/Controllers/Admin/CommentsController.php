@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Comment;
 use App\Post;
 use App\User;
 use Illuminate\Http\RedirectResponse;
@@ -9,10 +10,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 /**
- * Class PostsController
+ * Class CommentsController
  * @package App\Http\Controllers\Admin
  */
-class PostsController extends Controller
+class CommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,8 +22,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        return view('admin.post.index', compact('posts'));
+        $comments = Comment::all();
+        return view('admin.comment.index', compact('comments'));
     }
 
     /**
@@ -33,7 +34,8 @@ class PostsController extends Controller
     public function create()
     {
         $users = User::all();
-        return view('admin.post.create', compact('users'));
+        $posts = Post::all();
+        return view('admin.comment.create', compact('users', 'posts'));
     }
 
     /**
@@ -44,59 +46,60 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        Post::create($request->toArray());
-        return redirect(route('admin.post.index'));
+        Comment::create($request->toArray());
+        return redirect(route('admin.comment.index'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param Post $post
+     * @param Comment $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Comment $comment)
     {
-        return view('admin.post.show', compact('post'));
+        return view('admin.comment.show', compact('comment'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param $post
+     * @param Comment $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Comment $comment)
     {
         $users = User::all();
-        return view('admin.post.edit', compact('post', 'users'));
+        $posts = Post::all();
+        return view('admin.comment.edit', compact('comment', 'users', 'posts'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param Post $post
+     * @param Comment $comment
      * @return RedirectResponse
      */
-    public function update(Request $request, Post $post): RedirectResponse
+    public function update(Request $request, Comment $comment): RedirectResponse
     {
         $userData = array_filter($request->all());
-        $post->fill($userData);
-        $post->save();
+        $comment->fill($userData);
+        $comment->save();
 
-        return redirect(route('admin.post.index'));
+        return redirect(route('admin.comment.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Post $post
+     * @param Comment $comment
      * @return RedirectResponse
      * @throws \Exception
      */
-    public function destroy(Post $post): RedirectResponse
+    public function destroy(Comment $comment):RedirectResponse
     {
-        $post->delete();
+        $comment->delete();
         return back();
     }
 }

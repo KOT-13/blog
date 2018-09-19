@@ -10,6 +10,7 @@
             <label for="description">Category description:</label>
             <textarea class="form-control" name="description"></textarea><br>
             <button type="submit" class="btn btn-success form-control">Create</button>
+            @include('layouts.errors')
         </form>
     </div>
 @endsection

@@ -12,6 +12,7 @@
             <label for="description">Edit category description:</label>
             <textarea class="form-control" name="description">{{ $category->description }}</textarea><br>
             <button type="submit" class="btn btn-success form-control">Save changes</button>
+            @include('layouts.errors')
         </form>
     </div>
 @endsection

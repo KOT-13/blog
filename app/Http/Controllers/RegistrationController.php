@@ -2,23 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
 use App\User;
 
+/**
+ * Class RegistrationController
+ * @package App\Http\Controllers
+ */
 class RegistrationController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
         return view('registration.create');
     }
 
-    public function store()
+    /**
+     * @param StoreUserRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(StoreUserRequest $request)
     {
-        //validate the form
-        $this->validate(request(), [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|confirmed'
-        ]);
         //create and save the user
         $user = User::create([
             'name' => request('name'),
