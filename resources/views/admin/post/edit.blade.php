@@ -20,14 +20,16 @@
 
             <div class="form-group">
                 <select name="user_id">
-                    <option value="{{ $post->user->id }}" disabled selected>{{ $post->user->name }}</option>
+                    <option value="">Select user</option>
                     @foreach($users as $user)
-                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        <option @if($user->id === $post->user_id) selected @endif value="{{ $user->id }}">{{ $user->name }}</option>
                     @endforeach
                 </select>
             </div>
 
             <button type="submit" class="btn btn-primary">Save</button>
+
+            @include('layouts.errors')
         </form>
 
     </div>

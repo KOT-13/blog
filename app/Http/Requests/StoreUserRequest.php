@@ -27,10 +27,20 @@ class StoreUserRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|min:3',
+        $rules = [
+            'name' => 'required|min:3|max:30',
             'email' => 'required|email',
-            'password' => 'required|confirmed|min:6'
         ];
+
+        switch (true) {
+            case \in_array($this->getMethod(), ['PUT', 'PATCH']):
+                $rules['password'] = 'nullable|confirmed|min:6|max:16';
+                break;
+            case $this->getMethod() === 'POST':
+                $rules['password'] = 'required|confirmed|min:6|max:16';
+                break;
+        }
+
+        return $rules;
     }
 }

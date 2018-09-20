@@ -32,6 +32,10 @@
                 <textarea type="text" name="body" class="form-control">{{ $comment->body }}</textarea>
             </div>
             <button type="submit" class="btn btn-primary">Save</button>
+
+            @include('layouts.errors')
+
+
         </form>
 
     </div>

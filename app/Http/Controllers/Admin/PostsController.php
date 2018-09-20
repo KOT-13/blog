@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\StorePostRequest;
 use App\Post;
 use App\User;
 use Illuminate\Http\RedirectResponse;
@@ -39,10 +40,10 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param StorePostRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
         Post::create($request->toArray());
         return redirect(route('admin.post.index'));
@@ -74,11 +75,11 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param StorePostRequest $request
      * @param Post $post
      * @return RedirectResponse
      */
-    public function update(Request $request, Post $post): RedirectResponse
+    public function update(StorePostRequest $request, Post $post): RedirectResponse
     {
         $userData = array_filter($request->all());
         $post->fill($userData);

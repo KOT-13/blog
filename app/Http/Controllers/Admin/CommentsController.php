@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Comment;
+use App\Http\Requests\StoreCommentRequest;
 use App\Post;
 use App\User;
 use Illuminate\Http\RedirectResponse;
@@ -41,10 +42,10 @@ class CommentsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param StoreCommentRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCommentRequest $request)
     {
         Comment::create($request->toArray());
         return redirect(route('admin.comment.index'));
@@ -77,11 +78,11 @@ class CommentsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param StoreCommentRequest $request
      * @param Comment $comment
      * @return RedirectResponse
      */
-    public function update(Request $request, Comment $comment): RedirectResponse
+    public function update(StoreCommentRequest $request, Comment $comment): RedirectResponse
     {
         $userData = array_filter($request->all());
         $comment->fill($userData);

@@ -30,6 +30,9 @@
                 <textarea type="text" name="body" class="form-control"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Create</button>
+
+            @include('layouts.errors')
+
         </form>
 
     </div>
