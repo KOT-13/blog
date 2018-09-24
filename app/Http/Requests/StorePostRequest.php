@@ -29,7 +29,7 @@ class StorePostRequest extends FormRequest
     {
         return [
             'title' => 'required|min:3|max:80',
-            'body' => 'required|min:3|max:255',
+            'body' => 'required|min:3|max:500',
             'user_id' => 'required|integer'
         ];
     }

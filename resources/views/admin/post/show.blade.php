@@ -17,7 +17,7 @@
             <tbody>
             <tr>
                 <th scope="row">{{ $post->id }}</th>
-                <td>{{ $post->user->name }}</td>
+                <td>{{ optional($post->user)->name ?? 'Deleted' }}</td>
                 <td>{{ $post->title }}</td>
                 <td>{{ $post->body }}</td>
                 <td>{{ $post->created_at }}</td>
