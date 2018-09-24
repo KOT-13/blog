@@ -14,5 +14,8 @@
                 </li>
             </ul>
         @endforeach
+
+        {{ $categories->links() }}
+
     </div>
 @endsection

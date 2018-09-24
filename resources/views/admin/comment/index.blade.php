@@ -30,5 +30,8 @@
             </tbody>
             @endforeach
         </table>
+
+        {{ $comments->links() }}
+
     </div>
 @endsection

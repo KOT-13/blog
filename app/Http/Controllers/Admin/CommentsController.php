@@ -23,7 +23,7 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        $comments = Comment::all();
+        $comments = Comment::latest()->paginate(10);
         return view('admin.comment.index', compact('comments'));
     }
 

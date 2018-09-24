@@ -27,10 +27,15 @@ class StorePostRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'title' => 'required|min:3|max:80',
             'body' => 'required|min:3|max:500',
-            'user_id' => 'required|integer'
         ];
+
+        if(\Request::segment(1) === 'admin') {
+                $rules['user_id'] = 'required|integer';
+        }
+
+        return $rules;
     }
 }

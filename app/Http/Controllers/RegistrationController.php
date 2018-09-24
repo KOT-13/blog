@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
+use App\Mail\Welcome;
 use App\User;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * Class RegistrationController
@@ -25,15 +27,16 @@ class RegistrationController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        //create and save the user
         $user = User::create([
             'name' => request('name'),
             'email' => request('email'),
             'password' => bcrypt(request('password'))
         ]);
-        //Sign them in
+
         auth()->login($user);
-        //Redirect to the home page
+
+        Mail::to($user)->send(new Welcome);
+
         return redirect()->home();
     }
 }

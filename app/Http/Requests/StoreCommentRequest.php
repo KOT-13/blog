@@ -4,6 +4,10 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class StoreCommentRequest
+ * @package App\Http\Requests
+ */
 class StoreCommentRequest extends FormRequest
 {
     /**
@@ -23,10 +27,15 @@ class StoreCommentRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'body' => 'required|min:2',
-            'user_id' => 'required|integer',
-            'post_id' => 'required|integer'
         ];
+
+        if(\Request::segment(1) === 'admin') {
+            $rules['user_id'] = 'required|integer';
+            $rules['post_id'] = 'required|integer';
+        }
+
+        return $rules;
     }
 }
