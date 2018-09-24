@@ -26,5 +26,6 @@ class DatabaseSeeder extends Seeder
             $post->comments()->save(factory(\App\Comment::class)->make());
         });
         factory(\App\Category::class, 10)->create();
+        $this->call(RolesSeeder::class);
     }
 }

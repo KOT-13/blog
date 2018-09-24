@@ -1,6 +1,11 @@
 <div class="blog-masthead">
     <div class="container">
         <nav class="nav blog-nav">
+
+            @hasrole('admin')
+                <a class="nav-link" href="/admin">Admin panel</a>
+            @endhasrole
+
             <a class="nav-link active" href="/">Home</a>
 
             @if(! Auth::check())

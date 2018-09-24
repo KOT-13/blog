@@ -17,6 +17,9 @@ class RolesSeeder extends Seeder
      */
     public function run()
     {
+        // Reset cached roles and permissions
+        app()['cache']->forget('spatie.permission.cache');
+
         Role::create(['name' => 'admin']);
         $user = User::create([
             'name' => 'Alex',
