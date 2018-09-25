@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCategoryRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class CategoriesController
@@ -43,7 +44,12 @@ class CategoriesController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        Category::create($request->toArray());
+        $data = $request->except('file');
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('uploads');
+        }
+
+        Category::create($data);
         return redirect(route('admin.category.index'));
     }
 
@@ -94,6 +100,7 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category): RedirectResponse
     {
+        Storage::delete($category->image);
         $category->delete();
         return back();
     }

@@ -6,6 +6,7 @@
         <hr>
         <h3>Category description:</h3>{{ $category->description }}
         <h4>Image:</h4>
+        <img src="{{ $category->image_path }}" alt="">
         <hr>
         <h6>Category ID:</h6> {{ $category->id }}
         <h6>Created at:</h6> {{ $category->created_at }}
