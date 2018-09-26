@@ -28,8 +28,9 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|max:30',
-            'description' => 'required|min:3|max:255'
+            'name' => 'required|min:3|max:30|unique:categories',
+            'description' => 'required|min:3|max:255',
+            'image' => 'image'
         ];
     }
 }

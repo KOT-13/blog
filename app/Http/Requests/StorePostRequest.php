@@ -28,7 +28,7 @@ class StorePostRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'title' => 'required|min:3|max:80',
+            'title' => 'required|min:3|max:80|unique:posts',
             'body' => 'required|min:3|max:500',
         ];
 

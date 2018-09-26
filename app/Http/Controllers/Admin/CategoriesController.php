@@ -46,7 +46,7 @@ class CategoriesController extends Controller
     {
         $data = $request->except('file');
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('uploads');
+            $data['image'] = $request->file('image')->store('public/uploads');
         }
 
         Category::create($data);
@@ -84,7 +84,12 @@ class CategoriesController extends Controller
      */
     public function update(StoreCategoryRequest $request, Category $category): RedirectResponse
     {
-        $userData = array_filter($request->all());
+        $userData = $request->except('file');
+        if ($request->hasFile('image')) {
+            Storage::delete($category->image);
+            $userData['image'] = $request->file('image')->store('public/uploads');
+        }
+
         $category->fill($userData);
         $category->save();
 

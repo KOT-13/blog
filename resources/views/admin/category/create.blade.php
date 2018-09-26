@@ -11,9 +11,12 @@
             <textarea class="form-control" name="description">{{ old('description') }}</textarea><br>
 
             <div class="form-group">
-                <label for="image">Image</label>
-                <input type="file" name="image">
-                <p>Уведомление о форматах =)</p>
+                <div class="input-group mb-3">
+                    <div class="custom-file">
+                        <input type="file" name="image" class="custom-file-input" id="inputGroupFile02">
+                        <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+                    </div>
+                </div>
             </div>
 
             <button type="submit" class="btn btn-success form-control">Create</button>
