@@ -27,6 +27,8 @@ Route::get('/logout', 'SessionsController@destroy');
 
 Route::resource('category', 'CategoryController')->middleware('auth');
 
+Route::resource('category/{category}/products', 'ProductsController', ['as' => 'category.products']);
+
 Route::group(['middleware' => ['role:admin'], 'prefix'=>'admin', 'namespace'=>'Admin', 'as' => 'admin.'], function (){
     Route::get('/', 'DashboardController@index');
     Route::resource('category', 'CategoriesController');

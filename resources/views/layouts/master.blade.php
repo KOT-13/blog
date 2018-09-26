@@ -24,8 +24,8 @@
 
 <div class="blog-header">
     <div class="container">
-        <h1 class="blog-title">The Bootstrap Blog</h1>
-        <p class="lead blog-description">An example blog template built with Bootstrap.</p>
+        <h1 class="blog-title">PROJECT-13</h1>
+        <p class="lead blog-description">The best of the best of the best of the best.</p>
     </div>
 </div>
 

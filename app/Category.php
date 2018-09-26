@@ -18,6 +18,14 @@ class Category extends Model
     ];
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    /**
      * @return null|string
      */
     public function getImagePathAttribute():? string
