@@ -19,13 +19,16 @@ class ProductsController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::latest()->get();
+        $s = $request->input('s');
 
-        return view('admin.product.index', compact('products'));
+        $products = Product::latest()->search($s)->paginate(5);
+
+        return view('admin.product.index', compact('products', 's'));
     }
 
     /**

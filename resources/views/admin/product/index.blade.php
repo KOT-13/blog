@@ -4,6 +4,17 @@
     <div class="col-sm-8 blog-main">
         <h2>All Products:</h2>
         <a class="btn btn-success" href="{{ route('admin.product.create') }}">Add new Product</a><hr>
+
+        <form action="{{ route('admin.product.index') }}" method="get" class="form-inline">
+            <div class="form-group">
+                <input type="text" class="form-control" name="s" placeholder="Keyword" value="{{ isset($s) ? $s : ''}}">
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-success" type="submit">Search</button>
+            </div>
+        </form>
+        
         <table class="table">
             <thead>
             <tr>
@@ -35,7 +46,7 @@
             @endforeach
         </table>
 
-
+        {{ $products->appends(['s' => $s])->links() }}
 
     </div>
 @endsection

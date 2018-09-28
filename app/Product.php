@@ -37,4 +37,15 @@ class Product extends Model
         }
         return null;
     }
+
+    /**
+     * @param $query
+     * @param $s
+     * @return mixed
+     */
+    public function scopeSearch($query, $s)
+    {
+        return $query->where('title', 'like', '%' .$s. '%')
+            ->orWhere('description', 'like', '%' .$s. '%');
+    }
 }
