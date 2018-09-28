@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+/**
+ * Class SessionsController
+ * @package App\Http\Controllers
+ */
 class SessionsController extends Controller
 {
     public function __construct()
@@ -11,11 +15,17 @@ class SessionsController extends Controller
         $this->middleware('guest', ['except' => 'destroy']);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
         return view('sessions.create');
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store()
     {
         if (! auth()->attempt(request(['email', 'password']))) {
@@ -26,6 +36,9 @@ class SessionsController extends Controller
         return redirect()->home();
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy()
     {
         auth()->logout();

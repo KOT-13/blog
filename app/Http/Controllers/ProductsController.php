@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Product;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 /**
@@ -21,7 +23,7 @@ class ProductsController extends Controller
     {
         $products = $category->products;
 
-        return view('products.index', compact('products'));
+        return view('products.index', compact('products', 'category'));
     }
 
     /**
@@ -48,12 +50,13 @@ class ProductsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Category $category
+     * @param Product $product
+     * @return RedirectResponse
      */
-    public function show($id)
+    public function show(Category $category, Product $product)
     {
-        //
+        return view('products.show', compact('product'));
     }
 
     /**

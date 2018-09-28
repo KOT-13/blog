@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class Product
@@ -24,5 +25,16 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getImagePathAttribute():? string
+    {
+        if ($this->image) {
+            return Storage::url($this->image);
+        }
+        return null;
     }
 }

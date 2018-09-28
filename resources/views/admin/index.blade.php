@@ -10,8 +10,10 @@
         <h2>All categories: {{ $categories }}</h2> <a href="{{ route('admin.category.index') }}">Show</a>
 
         <hr>
-        <h2>All posts: {{ $posts }}</h2> <a href="{{ route('admin.post.index') }}">Show</a>
+        <h2>All products: {{ $products }}</h2> <a href="{{ route('admin.product.index') }}">Show</a>
 
+        <hr>
+        <h2>All posts: {{ $posts }}</h2> <a href="{{ route('admin.post.index') }}">Show</a>
 
         <hr>
         <h2>All comments: {{ $comments }}</h2> <a href="{{ route('admin.comment.index') }}">Show</a>

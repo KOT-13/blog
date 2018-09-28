@@ -7,6 +7,7 @@ use App\Category;
 use App\Comment;
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Product;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,8 @@ class DashboardController extends Controller
         $posts = Post::count();
         $categories = Category::count();
         $comments = Comment::count();
+        $products = Product::count();
 
-        return view('admin.index', compact('users','posts', 'categories', 'comments'));
+        return view('admin.index', compact('users','posts', 'categories', 'comments', 'products'));
     }
 }

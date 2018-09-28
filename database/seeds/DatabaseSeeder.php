@@ -20,12 +20,13 @@ class DatabaseSeeder extends Seeder
         DB::table('categories')->delete();
         DB::table('posts')->delete();
         DB::table('comments')->delete();
+        DB::table('products')->delete();
         factory(App\User::class, 50)->create()->each(function ($u) {
             /** @var \App\Post $post */
             $post = $u->posts()->save(factory(\App\Post::class)->make());
             $post->comments()->save(factory(\App\Comment::class)->make());
         });
-        factory(\App\Category::class, 10)->create();
+        factory(\App\Product::class, 10)->create();
         $this->call(RolesSeeder::class);
     }
 }

@@ -35,4 +35,5 @@ Route::group(['middleware' => ['role:admin'], 'prefix'=>'admin', 'namespace'=>'A
     Route::resource('user', 'UsersController');
     Route::resource('post', 'PostsController');
     Route::resource('comment', 'CommentsController');
+    Route::resource('product', 'ProductsController');
 });
