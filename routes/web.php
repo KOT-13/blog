@@ -29,6 +29,8 @@ Route::resource('category', 'CategoryController')->middleware('auth');
 
 Route::resource('category/{category}/products', 'ProductsController', ['as' => 'category.products']);
 
+Route::resource('profile', 'ProfilesController', ['as' => 'profile'])->middleware('auth');
+
 Route::group(['middleware' => ['role:admin'], 'prefix'=>'admin', 'namespace'=>'Admin', 'as' => 'admin.'], function (){
     Route::get('/', 'DashboardController@index');
     Route::resource('category', 'CategoriesController');

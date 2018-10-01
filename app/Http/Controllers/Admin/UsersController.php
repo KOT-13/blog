@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 /**
- * Class UsersController
+ * Class ProfilesController
  * @package App\Http\Controllers\Admin
  */
 class UsersController extends Controller

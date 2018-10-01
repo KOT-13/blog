@@ -16,7 +16,7 @@
             @if(Auth::check())
                 <a class="nav-link" href="/posts/create">Create a post</a>
                 <a class="nav-link" href="{{ route('category.index') }}">Categories</a>
-                <a class="nav-link ml-auto" href="#">{{ Auth::user()->name }}</a>
+                <a class="nav-link ml-auto" href="{{ route('profile.profile.show', Auth::user()->id) }}">{{ Auth::user()->name }}</a>
                 <a class="nav-link" href="/logout">Logout</a>
             @endif
         </nav>
